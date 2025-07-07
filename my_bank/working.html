@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TO-DO List</title>
+</head>
+<body>
+    <div style="display: flex;">
+        <iframe src="todolist.html" width="800px" height="400px"> </iframe>
+        <iframe src="bankIndex.html.html" width="800px" height="400px"> </iframe>
+    <div class="container">
+        <input type="text" placeholder="What's on your mind" id="task"> 
+        <button id="add" onclick="addTask()">Add Task</button>
+
+        <ol id="task-list"></ol>
+    </div>
+
+    
+    <script>
+        function addTask() {
+            const list = document.getElementById('task-list');
+            let task = document.getElementById("task").value.trim(); // Get input value
+
+            if (task === "") {
+                alert("Please enter a task!");
+                return;
+            }
+
+            let task_made = document.createElement("li"); // Create <li>
+            task_made.textContent = task;
+
+            let but = document.createElement("button"); // Create Delete Button
+            but.textContent = "Delete";
+            but.onclick = function() {
+                list.removeChild(task_made);
+            };
+
+            task_made.appendChild(but); // Add button inside <li>
+            list.appendChild(task_made); // Append <li> to the list
+
+            document.getElementById("task").value = ""; // Clear input field
+        }
+    </script>
+    </div>
+</body>
+</html>
